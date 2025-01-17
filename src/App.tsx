@@ -1,35 +1,49 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useEffect, useState } from 'react'
+import { AnimatePresence } from 'framer-motion'
+
+// Import sections (we'll create these next)
+import Navbar from './components/layout/Navbar'
+import Hero from './components/sections/Hero'
+import About from './components/sections/About'
+import Projects from './components/sections/Projects'
+import Skills from './components/sections/Skills'
+import Contact from './components/sections/Contact'
+import Footer from './components/layout/Footer'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [isLoading, setIsLoading] = useState(true)
+
+  useEffect(() => {
+    // Simulate loading state
+    const timer = setTimeout(() => {
+      setIsLoading(false)
+    }, 1000)
+
+    return () => clearTimeout(timer)
+  }, [])
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <AnimatePresence mode="wait">
+      {isLoading ? (
+        <div className="flex h-screen items-center justify-center">
+          <div className="h-8 w-8 animate-spin rounded-full border-4 border-primary border-t-transparent" />
+        </div>
+      ) : (
+        <main className="flex min-h-screen flex-col">
+          <Navbar />
+          <div className="flex-1">
+            <Hero />
+            <About />
+            <Projects />
+            <Skills />
+            <Contact />
+          </div>
+          <Footer />
+        </main>
+      )}
+    </AnimatePresence>
   )
 }
 
 export default App
+
