@@ -1,14 +1,14 @@
-import { useEffect, useState } from 'react'
-import { AnimatePresence } from 'framer-motion'
+import { useEffect, useState } from "react"
+import { AnimatePresence } from "framer-motion"
 
 // Import sections (we'll create these next)
-import Navbar from './components/layout/Navbar'
-import Hero from './components/sections/Hero'
-import About from './components/sections/About'
-import Projects from './components/sections/Projects'
-import Skills from './components/sections/Skills'
-import Contact from './components/sections/Contact'
-import Footer from './components/layout/Footer'
+import Navbar from "./components/layout/Navbar"
+import Hero from "./components/sections/Hero"
+import About from "./components/sections/About"
+import Projects from "./components/sections/Projects"
+import Skills from "./components/sections/Skills"
+import Contact from "./components/sections/Contact"
+import Footer from "./components/layout/Footer"
 
 function App() {
   const [isLoading, setIsLoading] = useState(true)
