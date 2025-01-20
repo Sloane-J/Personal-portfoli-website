@@ -3,8 +3,8 @@
 import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Menu, X } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { Container } from "@/components/ui/container"
+import { Button } from "@/components/ui/Button"
+import { Container } from "@/components/ui/Container"
 import { menuItemVariants, fadeUpVariant } from "@/utils/motion"
 
 const navItems = [
