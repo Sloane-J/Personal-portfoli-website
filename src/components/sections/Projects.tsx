@@ -3,8 +3,8 @@
 import { motion } from "framer-motion"
 import Image from "next/image"
 import { Github, ExternalLink } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { Container } from "@/components/ui/container"
+import { Button } from "@/components/ui/Button"
+import { Container } from "@/components/ui/Container"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { fadeUpVariant, staggerContainer, hoverScale } from "@/utils/motion"
 
