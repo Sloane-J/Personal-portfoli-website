@@ -2,10 +2,11 @@
 
 import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { Menu, X } from "lucide-react"
+import { Menu, X } from 'lucide-react'
 import { Button } from "@/components/ui/button"
 import { Container } from "@/components/ui/container"
 import { menuItemVariants, fadeUpVariant } from "@/utils/motion"
+import { ThemeToggle } from '@/components/ui/theme-toggle'
 
 const navItems = [
   { name: "Home", href: "#home" },
@@ -48,35 +49,46 @@ export default function Navbar() {
           </motion.a>
 
           {/* Desktop Navigation */}
-          <ul className="hidden space-x-8 md:flex">
-            {navItems.map((item, i) => (
-              <motion.li key={item.name} variants={menuItemVariants} initial="hidden" animate="visible" custom={i}>
-                <a
-                  href={item.href}
-                  className="text-sm text-muted-foreground transition-colors hover:text-foreground"
-                  onClick={(e) => {
-                    e.preventDefault()
-                    document.querySelector(item.href)?.scrollIntoView({
-                      behavior: "smooth",
-                    })
-                  }}
+          <div className="hidden items-center space-x-8 md:flex">
+            <ul className="flex space-x-8">
+              {navItems.map((item, i) => (
+                <motion.li 
+                  key={item.name} 
+                  variants={menuItemVariants} 
+                  initial="hidden" 
+                  animate="visible" 
+                  custom={i}
                 >
-                  {item.name}
-                </a>
-              </motion.li>
-            ))}
-          </ul>
+                  <a
+                    href={item.href}
+                    className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+                    onClick={(e) => {
+                      e.preventDefault()
+                      document.querySelector(item.href)?.scrollIntoView({
+                        behavior: "smooth",
+                      })
+                    }}
+                  >
+                    {item.name}
+                  </a>
+                </motion.li>
+              ))}
+            </ul>
+            <ThemeToggle />
+          </div>
 
-          {/* Mobile Menu Button */}
-          <Button
-            variant="ghost"
-            size="icon"
-            className="md:hidden"
-            onClick={toggleMenu}
-            aria-label={isOpen ? "Close menu" : "Open menu"}
-          >
-            {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-          </Button>
+          <div className="flex items-center space-x-4 md:hidden">
+            <ThemeToggle />
+            {/* Mobile Menu Button */}
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={toggleMenu}
+              aria-label={isOpen ? "Close menu" : "Open menu"}
+            >
+              {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            </Button>
+          </div>
         </nav>
 
         {/* Mobile Navigation */}
@@ -90,7 +102,13 @@ export default function Navbar() {
             >
               <ul className="space-y-4 pb-6">
                 {navItems.map((item, i) => (
-                  <motion.li key={item.name} variants={menuItemVariants} initial="hidden" animate="visible" custom={i}>
+                  <motion.li 
+                    key={item.name} 
+                    variants={menuItemVariants} 
+                    initial="hidden" 
+                    animate="visible" 
+                    custom={i}
+                  >
                     <a
                       href={item.href}
                       className="block text-muted-foreground transition-colors hover:text-foreground"
@@ -114,4 +132,3 @@ export default function Navbar() {
     </header>
   )
 }
-

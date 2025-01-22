@@ -1,12 +1,11 @@
-"use client"
+'use client'
 
-import { motion } from "framer-motion"
-import Image from "next/image"
-import { Button } from "@/components/ui/button"
-import { Container } from "@/components/ui/container"
-import { Card, CardContent } from "@/components/ui/card"
-import { fadeUpVariant, staggerContainer } from "@/utils/motion"
-import { Download } from "lucide-react"
+import { motion } from 'framer-motion'
+import { Button } from '@/components/ui/button'
+import { Container } from '@/components/ui/container'
+import { Card, CardContent } from '@/components/ui/card'
+import { fadeUpVariant, staggerContainer } from '@/utils/motion'
+import { Download } from 'lucide-react'
 
 export default function About() {
   return (
@@ -20,31 +19,45 @@ export default function About() {
           className="grid gap-12 md:grid-cols-2 md:gap-16"
         >
           {/* Image */}
-          <motion.div variants={fadeUpVariant} className="relative aspect-square overflow-hidden rounded-lg">
-            <Image src="/placeholder.svg" alt="Profile picture" fill className="object-cover" priority />
+          <motion.div
+            variants={fadeUpVariant}
+            className="relative aspect-square overflow-hidden rounded-lg"
+          >
+            <img
+              src="/placeholder.svg"
+              alt="Profile picture"
+              className="h-full w-full object-cover"
+            />
           </motion.div>
 
           {/* Content */}
           <motion.div variants={fadeUpVariant} className="space-y-6">
             <div className="space-y-2">
-              <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl">About Me</h2>
-              <p className="text-muted-foreground">Full Stack Developer based in [Your Location]</p>
+              <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl">
+                About Me
+              </h2>
+              <p className="text-muted-foreground">
+                Full Stack Developer based in [Your Location]
+              </p>
             </div>
 
             <div className="space-y-4">
               <p>
-                Hello! I'm [Your Name], a passionate Full Stack Developer with a keen interest in building digital
-                solutions that make a difference. With [X] years of experience in web development, I've had the
-                opportunity to work on diverse projects that have sharpened my skills in both frontend and backend
-                technologies.
+                Hello! I'm [Your Name], a passionate Full Stack Developer with a
+                keen interest in building digital solutions that make a difference.
+                With [X] years of experience in web development, I've had the
+                opportunity to work on diverse projects that have sharpened my
+                skills in both frontend and backend technologies.
               </p>
               <p>
-                My journey in tech began with [background story]. Since then, I've worked with various technologies and
-                frameworks, always staying current with the latest developments in the field.
+                My journey in tech began with [background story]. Since then, I've
+                worked with various technologies and frameworks, always staying
+                current with the latest developments in the field.
               </p>
               <p>
-                When I'm not coding, you can find me [your interests/hobbies]. I believe in continuous learning and
-                regularly attend tech conferences and contribute to open-source projects.
+                When I'm not coding, you can find me [your interests/hobbies].
+                I believe in continuous learning and regularly attend tech
+                conferences and contribute to open-source projects.
               </p>
             </div>
 
@@ -58,7 +71,9 @@ export default function About() {
                 </div>
                 <div className="space-y-2">
                   <h3 className="font-medium">Education</h3>
-                  <p className="text-sm text-muted-foreground">[Your Degree] in [Field]</p>
+                  <p className="text-sm text-muted-foreground">
+                    [Your Degree] in [Field]
+                  </p>
                 </div>
               </CardContent>
             </Card>
@@ -80,4 +95,3 @@ export default function About() {
     </section>
   )
 }
-
