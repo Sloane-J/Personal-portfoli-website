@@ -45,7 +45,7 @@ export default function Footer() {
           <div className="flex flex-col items-center gap-4 px-8 text-center">
             <p className="text-sm text-muted-foreground">Built with React, Tailwind CSS, and Framer Motion</p>
             <p className="text-sm text-muted-foreground">
-              © {new Date().getFullYear()} Your Name. All rights reserved.
+              © {new Date().getFullYear()} Samuel D. Jr. All rights reserved.
             </p>
           </div>
         </div>

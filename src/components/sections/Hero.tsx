@@ -15,7 +15,7 @@ export default function Hero() {
             <h1 className="text-3xl font-bold sm:text-4xl md:text-5xl lg:text-6xl">
               Hi, I'm{" "}
               <span className="bg-gradient-to-r from-primary to-primary/50 bg-clip-text text-transparent">
-                Your Name
+                Samuel
               </span>
             </h1>
             <h2 className="text-2xl font-semibold sm:text-3xl md:text-4xl">Full Stack Developer</h2>

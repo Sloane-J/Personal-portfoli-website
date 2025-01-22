@@ -37,25 +37,20 @@ export default function About() {
                 About Me
               </h2>
               <p className="text-muted-foreground">
-                Full Stack Developer based in [Your Location]
+                Full Stack Developer based in Ghana
               </p>
             </div>
 
             <div className="space-y-4">
               <p>
-                Hello! I'm [Your Name], a passionate Full Stack Developer with a
+                Hello! I'm Samuel D. Jr, a passionate Full Stack Developer with a
                 keen interest in building digital solutions that make a difference.
-                With [X] years of experience in web development, I've had the
+                With 4 years of experience in web development, I've had the
                 opportunity to work on diverse projects that have sharpened my
                 skills in both frontend and backend technologies.
               </p>
               <p>
-                My journey in tech began with [background story]. Since then, I've
-                worked with various technologies and frameworks, always staying
-                current with the latest developments in the field.
-              </p>
-              <p>
-                When I'm not coding, you can find me [your interests/hobbies].
+                When I'm not coding, you can find me reading or painting.
                 I believe in continuous learning and regularly attend tech
                 conferences and contribute to open-source projects.
               </p>
@@ -66,13 +61,13 @@ export default function About() {
                 <div className="space-y-2">
                   <h3 className="font-medium">Experience</h3>
                   <p className="text-sm text-muted-foreground">
-                    [X] years of professional experience in web development
+                    4 years of professional experience in web development
                   </p>
                 </div>
                 <div className="space-y-2">
                   <h3 className="font-medium">Education</h3>
                   <p className="text-sm text-muted-foreground">
-                    [Your Degree] in [Field]
+                    HND in Information and Communication Technology
                   </p>
                 </div>
               </CardContent>
