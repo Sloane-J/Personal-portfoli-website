@@ -4,7 +4,9 @@ import { motion } from "framer-motion"
 import { ArrowRight, Github, Linkedin, Mail } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Container } from "@/components/ui/container"
+import { TypeAnimation } from "@/components/ui/type-animation"
 import { fadeUpVariant, slideInLeft, slideInRight } from "@/utils/motion"
+import { siteConfig } from "@/lib/constants"
 
 export default function Hero() {
   return (
@@ -15,10 +17,12 @@ export default function Hero() {
             <h1 className="text-3xl font-bold sm:text-4xl md:text-5xl lg:text-6xl">
               Hi, I'm{" "}
               <span className="bg-gradient-to-r from-primary to-primary/50 bg-clip-text text-transparent">
-                Samuel
+                <TypeAnimation text={siteConfig.name} delay={500} />
               </span>
             </h1>
-            <h2 className="text-2xl font-semibold sm:text-3xl md:text-4xl">Full Stack Developer</h2>
+            <h2 className="text-2xl font-semibold sm:text-3xl md:text-4xl">
+              <TypeAnimation text={siteConfig.title} delay={1500} />
+            </h2>
           </motion.div>
 
           <motion.p
@@ -27,8 +31,7 @@ export default function Hero() {
             animate="visible"
             className="max-w-[600px] text-muted-foreground"
           >
-            I build exceptional digital experiences with modern web technologies. Focused on creating responsive,
-            user-friendly applications with clean code.
+            <TypeAnimation text={siteConfig.description} delay={2500} />
           </motion.p>
 
           <motion.div
@@ -50,17 +53,17 @@ export default function Hero() {
 
           <motion.div variants={fadeUpVariant} initial="hidden" animate="visible" className="flex gap-4">
             <Button variant="ghost" size="icon" asChild>
-              <a href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+              <a href={siteConfig.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub">
                 <Github className="h-5 w-5" />
               </a>
             </Button>
             <Button variant="ghost" size="icon" asChild>
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+              <a href={siteConfig.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
                 <Linkedin className="h-5 w-5" />
               </a>
             </Button>
             <Button variant="ghost" size="icon" asChild>
-              <a href="mailto:your.email@example.com" aria-label="Email">
+              <a href={`mailto:${siteConfig.email}`} aria-label="Email">
                 <Mail className="h-5 w-5" />
               </a>
             </Button>

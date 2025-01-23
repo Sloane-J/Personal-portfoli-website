@@ -1,24 +1,26 @@
+// React and third-party imports
 import { useEffect, useState } from "react"
 import { AnimatePresence } from "framer-motion"
 
-// Import sections (we'll create these next)
+// Layout components
 import Navbar from "./components/layout/Navbar"
+import Footer from "./components/layout/Footer"
+
+// Section components
 import Hero from "./components/sections/Hero"
 import About from "./components/sections/About"
 import Projects from "./components/sections/Projects"
 import Skills from "./components/sections/Skills"
 import Services from "./components/sections/Services"
 import Experience from "./components/sections/Experience"
-{/* import Testimonials from "./components/sections/Testimonials" */}
+import Testimonials from "./components/sections/Testimonials"
 import Blog from "./components/sections/Blog"
 import Contact from "./components/sections/Contact"
-import Footer from "./components/layout/Footer"
 
 function App() {
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
-    // Simulate loading state
     const timer = setTimeout(() => {
       setIsLoading(false)
     }, 1000)
@@ -42,8 +44,8 @@ function App() {
             <Skills />
             <Services />
             <Experience />
-            {/* <Testimonials /> */}
-             <Blog /> 
+            <Testimonials />
+            <Blog />
             <Contact />
           </div>
           <Footer />
@@ -54,4 +56,3 @@ function App() {
 }
 
 export default App
-
