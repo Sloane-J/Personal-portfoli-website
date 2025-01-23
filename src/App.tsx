@@ -10,7 +10,7 @@ import Skills from "./components/sections/Skills"
 import Services from "./components/sections/Services"
 import Experience from "./components/sections/Experience"
 {/* import Testimonials from "./components/sections/Testimonials" */}
-{/* import Blog from "./components/sections/Blog" */}
+import Blog from "./components/sections/Blog"
 import Contact from "./components/sections/Contact"
 import Footer from "./components/layout/Footer"
 
@@ -43,7 +43,7 @@ function App() {
             <Services />
             <Experience />
             {/* <Testimonials /> */}
-            {/* <Blog /> */}
+             <Blog /> 
             <Contact />
           </div>
           <Footer />
