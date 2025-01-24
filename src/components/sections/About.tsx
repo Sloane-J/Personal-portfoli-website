@@ -1,67 +1,142 @@
-'use client'
+"use client"
 
-import { motion } from 'framer-motion'
-import { Button } from '@/components/ui/button'
-import { Container } from '@/components/ui/container'
-import { Card, CardContent } from '@/components/ui/card'
-import { fadeUpVariant, staggerContainer } from '@/utils/motion'
-import { Download } from 'lucide-react'
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent } from '@/components/ui/card';
+import { Download, CodeIcon, PaletteIcon, BookOpenIcon } from 'lucide-react';
+import { Container } from '@/components/ui/container';
 
-export default function About() {
+export default function ModernAbout() {
+  const [activeTab, setActiveTab] = useState('story');
+
+  const tabContent = {
+    story: (
+      <motion.div
+        initial={{ opacity: 0, x: -50 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.5 }}
+        className="space-y-4"
+      >
+        <p>
+          Hello! I'm Samuel D. Jr, a passionate Full Stack Developer with a keen interest in building digital solutions that make a difference. 
+          With 4 years of experience in web development, I've worked on diverse projects that have sharpened my skills in both frontend and backend technologies.
+        </p>
+        <p>
+          My journey in tech is driven by a curiosity to solve complex problems and create innovative digital experiences.
+        </p>
+      </motion.div>
+    ),
+    interests: (
+      <motion.div
+        initial={{ opacity: 0, x: -50 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.5 }}
+        className="space-y-4"
+      >
+        <div className="flex items-center space-x-4 bg-secondary/10 p-4 rounded-lg">
+          <CodeIcon className="w-10 h-10 text-primary" />
+          <div>
+            <h3 className="font-semibold">Open Source</h3>
+            <p className="text-sm text-muted-foreground">
+              Active contributor to community-driven projects
+            </p>
+          </div>
+        </div>
+        <div className="flex items-center space-x-4 bg-secondary/10 p-4 rounded-lg">
+          <PaletteIcon className="w-10 h-10 text-primary" />
+          <div>
+            <h3 className="font-semibold">Creative Pursuits</h3>
+            <p className="text-sm text-muted-foreground">
+              Painting and digital art as a form of creative expression
+            </p>
+          </div>
+        </div>
+        <div className="flex items-center space-x-4 bg-secondary/10 p-4 rounded-lg">
+          <BookOpenIcon className="w-10 h-10 text-primary" />
+          <div>
+            <h3 className="font-semibold">Continuous Learning</h3>
+            <p className="text-sm text-muted-foreground">
+              Regular attendance at tech conferences and workshops
+            </p>
+          </div>
+        </div>
+      </motion.div>
+    )
+  };
+
   return (
-    <section id="about" className="py-20">
+    <section id="about" className="py-20 bg-background">
       <Container>
         <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="grid gap-12 md:grid-cols-2 md:gap-16"
+          className="grid md:grid-cols-2 gap-12"
         >
-          {/* Image */}
-          <motion.div
-            variants={fadeUpVariant}
-            className="relative aspect-square overflow-hidden rounded-lg"
+          {/* Image Section */}
+          <motion.div 
+            initial={{ scale: 0.9, opacity: 0 }}
+            whileInView={{ scale: 1, opacity: 1 }}
+            transition={{ 
+              duration: 0.6,
+              type: "spring",
+              stiffness: 100
+            }}
+            className="relative aspect-square overflow-hidden rounded-2xl shadow-xl"
           >
             <img
               src="/placeholder.svg"
               alt="Profile picture"
-              className="h-full w-full object-cover"
+              className="w-full h-full object-cover filter hover:grayscale-0 grayscale transition-all duration-300"
             />
           </motion.div>
 
-          {/* Content */}
-          <motion.div variants={fadeUpVariant} className="space-y-6">
-            <div className="space-y-2">
-              <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl">
-                About Me
-              </h2>
-              <p className="text-muted-foreground">
-                Full Stack Developer based in Ghana
-              </p>
+          {/* Content Section */}
+          <div className="space-y-6">
+            <div className="space-y-4">
+              <h2 className="text-4xl font-bold tracking-tight">About Me</h2>
+              <p className="text-muted-foreground">Full Stack Developer based in Ghana</p>
             </div>
 
-            <div className="space-y-4">
-              <p>
-                Hello! I'm Samuel D. Jr, a passionate Full Stack Developer with a
-                keen interest in building digital solutions that make a difference.
-                With 4 years of experience in web development, I've had the
-                opportunity to work on diverse projects that have sharpened my
-                skills in both frontend and backend technologies.
-              </p>
-              <p>
-                When I'm not coding, you can find me reading or painting.
-                I believe in continuous learning and regularly attend tech
-                conferences and contribute to open-source projects.
-              </p>
+            {/* Tab Navigation */}
+            <div className="flex space-x-4 border-b mb-4">
+              {['story', 'interests'].map((tab) => (
+                <button
+                  key={tab}
+                  onClick={() => setActiveTab(tab)}
+                  className={`
+                    pb-2 capitalize transition-colors
+                    ${activeTab === tab 
+                      ? 'border-b-2 border-primary text-primary' 
+                      : 'text-muted-foreground hover:text-foreground'}
+                  `}
+                >
+                  {tab}
+                </button>
+              ))}
             </div>
+
+            {/* Dynamic Content Area */}
+            <AnimatePresence mode="wait">
+              <motion.div 
+                key={activeTab}
+                initial={{ opacity: 0, x: -50 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: 50 }}
+                transition={{ duration: 0.3 }}
+              >
+                {tabContent[activeTab]}
+              </motion.div>
+            </AnimatePresence>
 
             <Card className="border-muted/50">
               <CardContent className="grid gap-4 p-6 sm:grid-cols-2">
                 <div className="space-y-2">
                   <h3 className="font-medium">Experience</h3>
                   <p className="text-sm text-muted-foreground">
-                    4 years of professional experience in web development
+                    4 years of professional web development
                   </p>
                 </div>
                 <div className="space-y-2">
@@ -84,9 +159,9 @@ export default function About() {
                 <a href="#contact">Get in Touch</a>
               </Button>
             </div>
-          </motion.div>
+          </div>
         </motion.div>
       </Container>
     </section>
-  )
+  );
 }

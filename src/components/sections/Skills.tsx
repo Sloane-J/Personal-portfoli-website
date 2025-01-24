@@ -7,36 +7,45 @@ import { fadeUpVariant, staggerContainer } from "@/utils/motion"
 
 const skills = {
   frontend: [
-    { name: "React", level: 90 },
-    { name: "Next.js", level: 85 },
-    { name: "TypeScript", level: 85 },
-    { name: "TailwindCSS", level: 90 },
-    { name: "JavaScript", level: 90 },
-    { name: "HTML/CSS", level: 95 },
-    { name: "Redux", level: 80 },
-    { name: "Framer Motion", level: 75 },
+    { name: "React", level: 90, color: "bg-blue-500" },
+    { name: "Next.js", level: 85, color: "bg-black" },
+    { name: "TypeScript", level: 85, color: "bg-blue-600" },
+    { name: "TailwindCSS", level: 90, color: "bg-teal-500" },
+    { name: "JavaScript", level: 90, color: "bg-yellow-500" },
+    { name: "HTML/CSS", level: 95, color: "bg-orange-500" },
+    { name: "Redux", level: 80, color: "bg-purple-500" },
+    { name: "Framer Motion", level: 75, color: "bg-pink-500" },
   ],
   backend: [
-    { name: "Node.js", level: 85 },
-    { name: "Express", level: 85 },
-    { name: "PostgreSQL", level: 80 },
-    { name: "MongoDB", level: 80 },
-    { name: "Prisma", level: 75 },
-    { name: "GraphQL", level: 70 },
-    { name: "REST APIs", level: 90 },
-    { name: "Python", level: 75 },
+    { name: "Node.js", level: 85, color: "bg-green-600" },
+    { name: "Express", level: 85, color: "bg-gray-700" },
+    { name: "PostgreSQL", level: 80, color: "bg-blue-800" },
+    { name: "MongoDB", level: 80, color: "bg-green-500" },
+    { name: "Prisma", level: 75, color: "bg-indigo-500" },
+    { name: "GraphQL", level: 70, color: "bg-pink-600" },
+    { name: "REST APIs", level: 90, color: "bg-red-500" },
+    { name: "Python", level: 75, color: "bg-blue-700" },
   ],
   tools: [
-    { name: "Git", level: 90 },
-    { name: "Docker", level: 75 },
-    { name: "AWS", level: 70 },
-    { name: "Vercel", level: 85 },
-    { name: "Jest", level: 80 },
-    { name: "CI/CD", level: 75 },
-    { name: "Agile", level: 85 },
-    { name: "VS Code", level: 95 },
+    { name: "Git", level: 90, color: "bg-orange-600" },
+    { name: "Docker", level: 75, color: "bg-blue-400" },
+    { name: "AWS", level: 70, color: "bg-amber-500" },
+    { name: "Vercel", level: 85, color: "bg-black" },
+    { name: "Jest", level: 80, color: "bg-red-400" },
+    { name: "CI/CD", level: 75, color: "bg-green-700" },
+    { name: "Agile", level: 85, color: "bg-indigo-600" },
+    { name: "VS Code", level: 95, color: "bg-blue-900" },
   ],
 }
+
+const SkillBar = ({ skill }: { skill: { name: string, level: number, color: string } }) => (
+  <motion.div 
+    initial={{ width: 0 }}
+    animate={{ width: `${skill.level}%` }}
+    transition={{ duration: 1, ease: "easeInOut" }}
+    className={`h-2 rounded-full ${skill.color}`}
+  />
+)
 
 export default function Skills() {
   return (
@@ -58,7 +67,13 @@ export default function Skills() {
           </motion.div>
 
           {/* Skills Grid */}
-          <motion.div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+          <motion.div 
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="grid gap-8 md:grid-cols-2 lg:grid-cols-3"
+          >
             {/* Frontend Skills */}
             <motion.div variants={fadeUpVariant}>
               <Card>
@@ -73,10 +88,7 @@ export default function Skills() {
                         <span className="text-muted-foreground">{skill.level}%</span>
                       </div>
                       <div className="h-2 rounded-full bg-muted">
-                        <div
-                          className="h-full rounded-full bg-primary transition-all"
-                          style={{ width: `${skill.level}%` }}
-                        />
+                        <SkillBar skill={skill} />
                       </div>
                     </div>
                   ))}
@@ -98,10 +110,7 @@ export default function Skills() {
                         <span className="text-muted-foreground">{skill.level}%</span>
                       </div>
                       <div className="h-2 rounded-full bg-muted">
-                        <div
-                          className="h-full rounded-full bg-primary transition-all"
-                          style={{ width: `${skill.level}%` }}
-                        />
+                        <SkillBar skill={skill} />
                       </div>
                     </div>
                   ))}
@@ -123,10 +132,7 @@ export default function Skills() {
                         <span className="text-muted-foreground">{skill.level}%</span>
                       </div>
                       <div className="h-2 rounded-full bg-muted">
-                        <div
-                          className="h-full rounded-full bg-primary transition-all"
-                          style={{ width: `${skill.level}%` }}
-                        />
+                        <SkillBar skill={skill} />
                       </div>
                     </div>
                   ))}
@@ -140,3 +146,14 @@ export default function Skills() {
   )
 }
 
+// Adding missing variants that were defined in the original code
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      delayChildren: 0.3,
+      staggerChildren: 0.2
+    }
+  }
+}
