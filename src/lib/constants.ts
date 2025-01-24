@@ -1,9 +1,9 @@
 export const siteConfig = {
-    name: "Your Name",
+    name: "Samuel",
     title: "Full Stack Developer",
     description: "Building modern web applications with React and Node.js",
-    email: "your.email@example.com",
-    github: "https://github.com/yourusername",
+    email: "samueldorkeyjr@gmail.com",
+    github: "https://github.com/Sloane-J",
     linkedin: "https://linkedin.com/in/yourusername",
   }
   
