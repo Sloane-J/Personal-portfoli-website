@@ -1,12 +1,11 @@
 "use client"
 
-import { motion } from "framer-motion"
-import { ArrowRight, Github, Linkedin, Mail } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { Container } from "@/components/ui/container"
-import { siteConfig } from "@/lib/constants"
+import { motion } from 'framer-motion';
+import { Github, Linkedin, Mail, ArrowDown } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { siteConfig } from '@/lib/constants';
 
-export default function Hero() {
+export default function HeroWithGradientBackground() {
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: (index) => ({
@@ -30,13 +29,12 @@ export default function Hero() {
     }
   };
 
-  const SplitText = ({ text, className, index }) => {
+  const SplitText = ({ text, className }) => {
     return (
       <motion.h1
         initial="hidden"
         animate="visible"
         variants={containerVariants}
-        custom={index}
         className={className}
       >
         {text.split('').map((char, charIndex) => (
@@ -52,116 +50,95 @@ export default function Hero() {
     );
   };
 
-  const SplitDescription = ({ text, className }) => {
-    return (
-      <motion.p
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{
-          delay: 2.5,
-          type: "spring",
-          stiffness: 120
-        }}
-        className={className}
-      >
-        {text}
-      </motion.p>
-    );
-  };
-
   return (
-    <section id="home" className="relative flex min-h-screen items-center justify-center py-20">
-      <Container className="relative z-10">
-        <div className="flex flex-col items-center gap-8 text-center">
+    <section className="relative min-h-screen flex items-center overflow-hidden">
+      {/* Gradient Circles */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute -top-1/4 -left-1/4 w-[600px] h-[600px] bg-gradient-to-r from-primary/20 to-primary/10 rounded-full blur-[120px] animate-slow-spin opacity-50" />
+        <div className="absolute -bottom-1/4 -right-1/4 w-[500px] h-[500px] bg-gradient-to-l from-secondary/20 to-secondary/10 rounded-full blur-[120px] animate-slow-spin-reverse opacity-50" />
+      </div>
+
+      {/* Frosted Glass Overlay */}
+      <div className="absolute inset-0 bg-background/60 backdrop-blur-md pointer-events-none" />
+
+      <div className="container mx-auto relative z-10 grid grid-cols-1 md:grid-cols-2 gap-8 px-4 py-16">
+        {/* Left Content */}
+        <div className="flex flex-col justify-center space-y-6 bg-background/70 backdrop-blur-sm p-8 rounded-2xl">
           <div className="space-y-4">
             <SplitText 
-              text={`Hi, I'm ${siteConfig.name}`} 
-              index={0}
-              className="text-3xl font-bold sm:text-4xl md:text-5xl lg:text-6xl"
+              text="Hi, I'm Samuel" 
+              className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground"
             />
             <SplitText 
-              text={siteConfig.title} 
-              index={1}
-              className="text-2xl font-semibold sm:text-3xl md:text-4xl"
+              text="Full Stack Developer" 
+              className="text-3xl md:text-4xl lg:text-5xl font-semibold text-primary"
             />
           </div>
 
-          <SplitDescription 
-            text={siteConfig.description}
-            className="max-w-[600px] text-muted-foreground"
-          />
-
-          <motion.div
+          <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{
-              delay: 3,
-              type: "spring",
-              stiffness: 120
-            }}
-            className="flex flex-col gap-4 sm:flex-row"
+            transition={{ delay: 1, type: "spring" }}
+            className="text-muted-foreground max-w-prose"
           >
-            <Button asChild size="lg">
-              <a href="#projects">
-                View My Work
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </a>
-            </Button>
-            <Button variant="outline" size="lg" asChild>
-              <a href="#contact">Get In Touch</a>
-            </Button>
-          </motion.div>
+            {siteConfig.description}
+          </motion.p>
 
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{
-              delay: 3.5,
-              type: "spring",
-              stiffness: 120
-            }}
-            className="flex gap-4"
+            transition={{ delay: 1.2, type: "spring" }}
+            className="flex space-x-4"
           >
-            <Button variant="ghost" size="icon" asChild>
-              <a href={siteConfig.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-                <Github className="h-5 w-5" />
-              </a>
+            <Button variant="default" size="lg" asChild>
+              <a href="#projects">View Work</a>
             </Button>
-            <Button variant="ghost" size="icon" asChild>
-              <a href={siteConfig.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-                <Linkedin className="h-5 w-5" />
-              </a>
+            <Button variant="outline" size="lg" asChild>
+              <a href="#contact">Contact Me</a>
             </Button>
-            <Button variant="ghost" size="icon" asChild>
-              <a href={`mailto:${siteConfig.email}`} aria-label="Email">
-                <Mail className="h-5 w-5" />
-              </a>
-            </Button>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1.4, type: "spring" }}
+            className="flex space-x-4 pt-4"
+          >
+            <a href={siteConfig.github} target="_blank" className="hover:scale-110 transition">
+              <Github className="w-6 h-6 text-muted-foreground hover:text-foreground" />
+            </a>
+            <a href={siteConfig.linkedin} target="_blank" className="hover:scale-110 transition">
+              <Linkedin className="w-6 h-6 text-muted-foreground hover:text-foreground" />
+            </a>
+            <a href={`mailto:${siteConfig.email}`} className="hover:scale-110 transition">
+              <Mail className="w-6 h-6 text-muted-foreground hover:text-foreground" />
+            </a>
           </motion.div>
         </div>
 
-        {/* Background decoration */}
-        <div className="absolute left-0 top-0 -z-10 h-full w-full">
-          <motion.div
-            initial={{ x: '-100%', opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            transition={{
-              type: "spring",
-              stiffness: 100
-            }}
-            className="absolute left-0 top-1/4 h-64 w-64 rounded-full bg-primary/10 blur-3xl"
-          />
-          <motion.div
-            initial={{ x: '100%', opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            transition={{
-              type: "spring",
-              stiffness: 100
-            }}
-            className="absolute right-0 top-1/2 h-64 w-64 rounded-full bg-primary/10 blur-3xl"
-          />
-        </div>
-      </Container>
+        {/* Right Visual */}
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 1.5, type: "spring" }}
+          className="hidden md:flex items-center justify-center"
+        >
+          <div className="w-full max-w-md aspect-square bg-primary/10 rounded-3xl flex items-center justify-center">
+            <div className="w-64 h-64 bg-primary/20 rounded-full animate-pulse"></div>
+          </div>
+        </motion.div>
+      </div>
+
+      {/* Scroll Indicator */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 2, type: "spring" }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center"
+      >
+        <ArrowDown className="w-6 h-6 text-muted-foreground animate-bounce" />
+        <span className="text-xs text-muted-foreground">Scroll</span>
+      </motion.div>
     </section>
-  )
+  );
 }
