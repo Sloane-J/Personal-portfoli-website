@@ -1,105 +1,163 @@
 "use client"
 
-import { motion } from "framer-motion"
+import { useState } from "react"
+import { Button } from "@/components/ui/button"
+import { Card, CardContent } from "@/components/ui/card"
+import { Form, FormField } from "@/components/ui/form"
 import { Container } from "@/components/ui/container"
-import { fadeUpVariant, staggerContainer } from "@/utils/motion"
-import { Mail, Phone, Linkedin, Github, MapPin } from "lucide-react"
+import { Mail, Phone, Linkedin, Github, MapPin, Send, Check } from "lucide-react"
 
-const contactDetails = [
+const contactMethods = [
   {
     icon: Mail,
-    title: "Email",
+    label: "Email",
     value: "hello@yourname.dev",
-    link: "mailto:hello@yourname.dev"
+    href: "mailto:hello@yourname.dev",
   },
   {
     icon: Phone,
-    title: "Phone",
+    label: "Phone",
     value: "+1 (555) 123-4567",
-    link: "tel:+15551234567"
+    href: "tel:+15551234567",
   },
   {
     icon: Linkedin,
-    title: "LinkedIn",
-    value: "/in/yourprofile",
-    link: "https://linkedin.com/in/yourprofile"
+    label: "LinkedIn",
+    value: "Connect on LinkedIn",
+    href: "https://linkedin.com/in/yourprofile",
   },
   {
     icon: Github,
-    title: "GitHub",
+    label: "GitHub",
     value: "@yourusername",
-    link: "https://github.com/yourusername"
+    href: "https://github.com/yourusername",
   },
   {
     icon: MapPin,
-    title: "Location",
+    label: "Location",
     value: "San Francisco, CA",
-    link: ""
-  }
+    href: null,
+  },
 ]
 
-export default function Contact() {
-  return (
-    <section id="contact" className="py-20 bg-background">
-      <Container>
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="space-y-12"
-        >
-          <motion.div variants={fadeUpVariant} className="text-center">
-            <h2 className="text-4xl font-bold tracking-tight mb-4">Get in Touch</h2>
-            <p className="text-muted-foreground max-w-xl mx-auto">
-              Interested in collaboration or just want to say hello? I'm always open to new opportunities.
-            </p>
-          </motion.div>
+export default function ContactPage() {
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [isSuccess, setIsSuccess] = useState(false)
 
-          <motion.div 
-            variants={fadeUpVariant}
-            className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto"
-          >
-            {contactDetails.map((contact, index) => (
-              <motion.div
-                key={contact.title}
-                initial={{ opacity: 0, y: 50 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{
-                  delay: index * 0.2,
-                  type: "spring",
-                  stiffness: 300,
-                  damping: 20
-                }}
-                whileHover={{ 
-                  scale: 1.05,
-                  transition: { duration: 0.3 }
-                }}
-                className="bg-muted/50 rounded-xl p-6 text-center group hover:bg-primary/10 transition-all duration-300 ease-in-out"
-              >
-                <div className="flex justify-center mb-4">
-                  <contact.icon 
-                    className="w-12 h-12 text-primary group-hover:rotate-12 transition-transform duration-300"
-                  />
-                </div>
-                <h3 className="text-xl font-semibold mb-2">{contact.title}</h3>
-                {contact.link ? (
-                  <a 
-                    href={contact.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-muted-foreground hover:text-primary transition-colors"
-                  >
-                    {contact.value}
-                  </a>
-                ) : (
-                  <p className="text-muted-foreground">{contact.value}</p>
-                )}
-              </motion.div>
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    setIsSubmitting(true)
+    // Simulate API call
+    await new Promise((resolve) => setTimeout(resolve, 2000))
+    setIsSubmitting(false)
+    setIsSuccess(true)
+  }
+
+  const handleReset = () => {
+    setIsSuccess(false)
+  }
+
+  return (
+    <div className="container max-w-6xl px-4 py-16">
+      <div className="grid gap-8 lg:grid-cols-2">
+        {/* Contact Information */}
+        <div className="flex flex-col gap-6">
+          <div>
+            <h1 className="text-3xl font-bold tracking-tight">Get in Touch</h1>
+            <p className="mt-2 text-muted-foreground">
+              Have a question or want to work together? I'd love to hear from you.
+            </p>
+          </div>
+          
+          <div className="h-px w-full bg-border my-4" />
+          
+          <div className="grid gap-6">
+            {contactMethods.map((method) => (
+              <Card key={method.label} className="border bg-muted/50">
+                <CardContent className="flex items-center gap-4 p-4">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10">
+                    <method.icon className="h-5 w-5 text-primary" />
+                  </div>
+                  <div className="flex-1">
+                    <p className="text-sm font-medium">{method.label}</p>
+                    {method.href ? (
+                      <a
+                        href={method.href}
+                        className="text-sm text-muted-foreground hover:text-primary"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        {method.value}
+                      </a>
+                    ) : (
+                      <p className="text-sm text-muted-foreground">{method.value}</p>
+                    )}
+                  </div>
+                </CardContent>
+              </Card>
             ))}
-          </motion.div>
-        </motion.div>
-      </Container>
-    </section>
+          </div>
+        </div>
+
+        {/* Contact Form */}
+        <Card>
+          <CardContent className="p-6">
+            {isSuccess ? (
+              <div className="flex flex-col items-center justify-center py-12 text-center">
+                <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-primary/10">
+                  <Check className="h-6 w-6 text-primary" />
+                </div>
+                <h3 className="mb-2 text-xl font-semibold">Message Sent!</h3>
+                <p className="mb-6 text-muted-foreground">
+                  Thank you for reaching out. I'll respond to your message soon.
+                </p>
+                <Button onClick={handleReset} variant="outline">
+                  Send Another Message
+                </Button>
+              </div>
+            ) : (
+              <Form onSubmit={handleSubmit} className="space-y-6">
+                <FormField label="Name">
+                  <input
+                    type="text"
+                    required
+                    className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                    placeholder="Enter your name"
+                  />
+                </FormField>
+                <FormField label="Email">
+                  <input
+                    type="email"
+                    required
+                    className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                    placeholder="Enter your email"
+                  />
+                </FormField>
+                <FormField label="Message">
+                  <textarea
+                    required
+                    className="flex min-h-[120px] w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                    placeholder="What would you like to say?"
+                  />
+                </FormField>
+                <Button type="submit" className="w-full" disabled={isSubmitting}>
+                  {isSubmitting ? (
+                    <div className="flex items-center gap-2">
+                      <div className="h-4 w-4 animate-spin rounded-full border-2 border-current border-t-transparent" />
+                      <span>Sending...</span>
+                    </div>
+                  ) : (
+                    <div className="flex items-center gap-2">
+                      <Send className="h-4 w-4" />
+                      <span>Send Message</span>
+                    </div>
+                  )}
+                </Button>
+              </Form>
+            )}
+          </CardContent>
+        </Card>
+      </div>
+    </div>
   )
 }
