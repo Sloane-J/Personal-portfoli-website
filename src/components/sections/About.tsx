@@ -20,7 +20,7 @@ export default function ModernAbout() {
       >
         <p>
           Hello! I'm Samuel D. Jr, a passionate Full Stack Developer with a keen interest in building digital solutions that make a difference. 
-          With 4 years of experience in web development, I've worked on diverse projects that have sharpened my skills in both frontend and backend technologies.
+          With 3 years of experience in web development, I've worked on diverse projects that have sharpened my skills in both frontend and backend technologies.
         </p>
         <p>
           My journey in tech is driven by a curiosity to solve complex problems and create innovative digital experiences.
@@ -136,7 +136,7 @@ export default function ModernAbout() {
                 <div className="space-y-2">
                   <h3 className="font-medium">Experience</h3>
                   <p className="text-sm text-muted-foreground">
-                    4 years of professional web development
+                    3 years of professional web development
                   </p>
                 </div>
                 <div className="space-y-2">

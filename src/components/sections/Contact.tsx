@@ -11,31 +11,31 @@ const contactMethods = [
   {
     icon: Mail,
     label: "Email",
-    value: "hello@yourname.dev",
-    href: "mailto:hello@yourname.dev",
+    value: "samueldorkeyjr@gmail.com",
+    href: "mailto:samueldorkeyjr@gmail.com",
   },
   {
     icon: Phone,
     label: "Phone",
-    value: "+1 (555) 123-4567",
-    href: "tel:+15551234567",
+    value: "+233 257 774 919",
+    href: "tel:+233257774919",
   },
   {
     icon: Linkedin,
     label: "LinkedIn",
     value: "Connect on LinkedIn",
-    href: "https://linkedin.com/in/yourprofile",
+    href: "https://linkedin.com/in/samueldorkeyjr",
   },
   {
     icon: Github,
     label: "GitHub",
-    value: "@yourusername",
-    href: "https://github.com/yourusername",
+    value: "@Sloane-J",
+    href: "https://github.com/Sloane-J",
   },
   {
     icon: MapPin,
     label: "Location",
-    value: "San Francisco, CA",
+    value: "Okorase, Koforidua. Ghana",
     href: null,
   },
 ]
@@ -65,7 +65,7 @@ export default function ContactPage() {
           <div>
             <h1 className="text-3xl font-bold tracking-tight">Get in Touch</h1>
             <p className="mt-2 text-muted-foreground">
-              Have a question or want to work together? I'd love to hear from you.
+              Have a question or want to work together? I|d love to hear from you.
             </p>
           </div>
           

@@ -13,7 +13,7 @@ interface NavItem {
 }
 
 const navItems: NavItem[] = [
-  { name: "Home", href: "#home" },
+  { name: "Home", href: "#hero" },
   { name: "About", href: "#about" },
   { name: "Projects", href: "#projects" },
   { name: "Skills", href: "#skills" },

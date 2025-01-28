@@ -19,28 +19,28 @@ interface Project {
 
 const projects: Project[] = [
   {
-    title: 'E-commerce Platform',
+    title: 'Blog',
     description: 'A full-stack e-commerce platform with real-time inventory management, secure payments, and an intuitive admin dashboard.',
     image: '/placeholder.svg',
-    tags: ['Next.js', 'TypeScript', 'Prisma', 'Stripe', 'TailwindCSS'],
+    tags: ['Hugo', 'Html', 'JavaScript', 'Go', 'TailwindCSS'],
     github: 'https://github.com',
-    demo: 'https://demo.com',
-    type: ['Web App', 'Full Stack']
+    demo: 'https://intheloop-blog.netlify.app/',
+    type: ['Web App', 'Static Site Generation']
   },
   {
-    title: 'Task Management App',
+    title: 'Volta Portal',
     description: 'A collaborative task management application with real-time updates, team workflows, and progress tracking.',
     image: '/placeholder.svg',
-    tags: ['React', 'Node.js', 'Socket.io', 'MongoDB', 'Express'],
-    github: 'https://github.com',
-    demo: 'https://demo.com',
-    type: ['Web App', 'Productivity']
+    tags: ['JavaScript', 'JSON', 'HTML', 'TailwindCss'],
+    github: 'https://number-9ner.netlify.app/',
+    demo: 'https://number-9ner.netlify.app/',
+    type: ['Web App', 'Tourism']
   },
   {
-    title: 'AI Content Generator',
+    title: 'Peer-to-Peer LMS',
     description: "An AI-powered content generation tool using OpenAI GPT-3.",
     image: '/placeholder.svg',
-    tags: ['Next.js', 'OpenAI', 'TailwindCSS', 'Vercel'],
+    tags: ['PHP', 'AI', 'Bootstrap', 'Github'],
     github: 'https://github.com',
     demo: 'https://demo.com',
     type: ['AI', 'Web App']
