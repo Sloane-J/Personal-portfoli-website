@@ -33,11 +33,11 @@ interface SkillCategory {
 }
 
 export const personalInfo = {
-  name: "Your Name",
+  name: "Samuel Dorkey",
   role: "Full Stack Developer",
   description: "Building exceptional digital experiences with modern web technologies.",
-  email: "your.email@example.com",
-  location: "City, Country",
+  email: "samueldorkeyjr@gmail.com",
+  location: "Koforidua, Ghana",
   availability: "Open to new opportunities",
 }
 
