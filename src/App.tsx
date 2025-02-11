@@ -14,7 +14,7 @@ import Footer from "./components/layout/Footer"
 import CustomCursor from "./components/ui/custom-cursor"
 import { ThemeProvider } from "./components/theme-provider"
 import ScrollToTop from "./components/ui/scroll-to-top"
-import Experience from "./components/sections/Experience"
+{/*import Experience from "./components/sections/Experience"*/}
 import Blog from "./components/sections/Blog"
 import Services from "./components/sections/Services"
 import Testimonials from "./components/sections/Testimonials"
@@ -46,7 +46,7 @@ function App() {
               <div className="flex-1">
                 <Hero />
                 <About />
-                <Experience />
+                {/*<Experience />*/}
                 <Services />
                 <Projects />
                 <Skills />
