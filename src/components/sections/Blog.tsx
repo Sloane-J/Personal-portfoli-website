@@ -7,6 +7,9 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { fadeUpVariant, staggerContainer, hoverScale } from '@/utils/motion'
 
+// Create a motion version of Card
+const MotionCard = motion(Card);
+
 const blogPosts = [
   {
     title: 'Building Scalable React Applications',
@@ -63,8 +66,7 @@ export default function Blog() {
           <motion.div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             {blogPosts.map((post, index) => (
               <motion.div key={index} variants={fadeUpVariant}>
-                <Card
-                  as={motion.div}
+                <MotionCard
                   variants={hoverScale}
                   whileHover="hover"
                   className="overflow-hidden"
@@ -98,7 +100,7 @@ export default function Blog() {
                       ))}
                     </div>
                   </CardContent>
-                </Card>
+                </MotionCard>
               </motion.div>
             ))}
           </motion.div>

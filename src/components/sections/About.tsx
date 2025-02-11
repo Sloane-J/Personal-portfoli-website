@@ -7,10 +7,15 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Download, CodeIcon, PaletteIcon, BookOpenIcon } from 'lucide-react';
 import { Container } from '@/components/ui/container';
 
-export default function ModernAbout() {
-  const [activeTab, setActiveTab] = useState('story');
+// Define valid tab types
+type TabType = 'story' | 'interests';
 
-  const tabContent = {
+export default function ModernAbout() {
+  // Single state declaration with proper typing
+  const [activeTab, setActiveTab] = useState<TabType>('story');
+
+  // Define tabContent with proper typing
+  const tabContent: Record<TabType, JSX.Element> = {
     story: (
       <motion.div
         initial={{ opacity: 0, x: -50 }}
@@ -102,7 +107,7 @@ export default function ModernAbout() {
 
             {/* Tab Navigation */}
             <div className="flex space-x-4 border-b mb-4">
-              {['story', 'interests'].map((tab) => (
+              {(['story', 'interests'] as const).map((tab) => (
                 <button
                   key={tab}
                   onClick={() => setActiveTab(tab)}
@@ -118,14 +123,16 @@ export default function ModernAbout() {
               ))}
             </div>
 
-            {/* Dynamic Content Area */}
-            <AnimatePresence mode="wait">
+            <AnimatePresence mode="wait" initial={false}>
               <motion.div 
                 key={activeTab}
-                initial={{ opacity: 0, x: -50 }}
+                initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: 50 }}
-                transition={{ duration: 0.3 }}
+                exit={{ opacity: 0, x: 20 }}
+                transition={{ 
+                  duration: 0.2,
+                  ease: "easeInOut"
+                }}
               >
                 {tabContent[activeTab]}
               </motion.div>
