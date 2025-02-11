@@ -7,7 +7,7 @@ import { fadeUpVariant, staggerContainer } from "@/utils/motion"
 
 const skills = {
   frontend: [
-    { name: "React", level: 40, color: "bg-blue-500" },
+    { name: "React", level: 70, color: "bg-blue-500" },
     { name: "Hugo", level: 85, color: "bg-black" },
     { name: "TypeScript", level: 65, color: "bg-blue-600" },
     { name: "TailwindCSS", level: 90, color: "bg-teal-500" },
@@ -78,7 +78,7 @@ export default function Skills() {
             <motion.div variants={fadeUpVariant}>
               <Card>
                 <CardHeader>
-                  <CardTitle>Frontend Development</CardTitle>
+                  <CardTitle>Front-End Development</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   {skills.frontend.map((skill) => (
@@ -100,7 +100,7 @@ export default function Skills() {
             <motion.div variants={fadeUpVariant}>
               <Card>
                 <CardHeader>
-                  <CardTitle>Backend Development</CardTitle>
+                  <CardTitle>Back-End Development</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   {skills.backend.map((skill) => (
