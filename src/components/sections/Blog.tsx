@@ -8,7 +8,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { fadeUpVariant, staggerContainer, hoverScale } from '@/utils/motion'
 
 // Create a motion version of Card
-const MotionCard = motion(Card);
+const MotionCard = motion.create(Card);
 
 const blogPosts = [
   {
