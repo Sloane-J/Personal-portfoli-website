@@ -15,13 +15,13 @@ interface Service {
   description: string
   icon: LucideIcon
 }
-
+/*
 interface Social {
   platform: string
   url: string
   icon: LucideIcon
 }
-
+*/
 interface Skill {
   name: string
   level: number
