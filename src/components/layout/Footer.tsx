@@ -5,12 +5,12 @@ import { Button } from "@/components/ui/button"
 const socialLinks = [
   {
     name: "GitHub",
-    href: "https://github.com",
+    href: "https://github.com/Sloane-J",
     icon: Github,
   },
   {
     name: "LinkedIn",
-    href: "https://linkedin.com",
+    href: "https://www.linkedin.com/in/samuel-dorkey-9a88901bb/",
     icon: Linkedin,
   },
   {
@@ -20,7 +20,7 @@ const socialLinks = [
   },
   {
     name: "Email",
-    href: "mailto:your.email@example.com",
+    href: "mailto:samueldorkeyjr@gmail.com",
     icon: Mail,
   },
 ]

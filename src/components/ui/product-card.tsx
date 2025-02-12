@@ -1,18 +1,17 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
-import Image from "next/image"
-import { Github, ExternalLink } from "lucide-react"
-import { Button } from "./button"
-import { Card, CardContent, CardHeader, CardTitle } from "./card"
+import { motion } from "framer-motion";
+import { Github, ExternalLink } from "lucide-react";
+import { Button } from "./button";
+import { Card, CardContent, CardHeader, CardTitle } from "./card";
 
 interface ProjectCardProps {
-  title: string
-  description: string
-  image: string
-  tags: string[]
-  github: string
-  demo: string
+  title: string;
+  description: string;
+  image: string;
+  tags: string[];
+  github: string;
+  demo: string;
 }
 
 export function ProjectCard({ title, description, image, tags, github, demo }: ProjectCardProps) {
@@ -24,8 +23,13 @@ export function ProjectCard({ title, description, image, tags, github, demo }: P
       viewport={{ once: true }}
     >
       <Card className="overflow-hidden">
+        {/* Replaced Next.js Image with standard <img> */}
         <div className="relative aspect-video">
-          <Image src={image || "/placeholder.svg"} alt={title} fill className="object-cover" />
+          <img
+            src={image || "/placeholder.svg"}
+            alt={title}
+            className="object-cover w-full h-full"
+          />
         </div>
         <CardHeader>
           <CardTitle>{title}</CardTitle>
@@ -56,6 +60,5 @@ export function ProjectCard({ title, description, image, tags, github, demo }: P
         </CardContent>
       </Card>
     </motion.div>
-  )
+  );
 }
-

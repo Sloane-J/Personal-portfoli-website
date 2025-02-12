@@ -1,26 +1,25 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
-import Image from "next/image"
-import { Github, ExternalLink } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { hoverScale } from "@/utils/motion"
+import { motion } from "framer-motion";
+import { Github, ExternalLink } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { hoverScale } from "@/utils/motion";
 
 interface ProjectCardProps {
-  title: string
-  description: string
-  image: string
-  tags: string[]
-  github: string
-  demo: string
+  title: string;
+  description: string;
+  image: string;
+  tags: string[];
+  github: string;
+  demo: string;
 }
 
 export default function ProjectCard({ title, description, image, tags, github, demo }: ProjectCardProps) {
   return (
     <Card as={motion.div} variants={hoverScale} whileHover="hover" className="overflow-hidden">
       <div className="relative aspect-video">
-        <Image src={image || "/placeholder.svg"} alt={title} fill className="object-cover" />
+        <img src={image || "/placeholder.svg"} alt={title} className="object-cover w-full h-full" />
       </div>
       <CardHeader>
         <CardTitle className="line-clamp-1">{title}</CardTitle>
@@ -50,16 +49,5 @@ export default function ProjectCard({ title, description, image, tags, github, d
         </div>
       </CardContent>
     </Card>
-  )
+  );
 }
-
-// Example usage:
-// <ProjectCard
-//   title="E-commerce Platform"
-//   description="A full-stack e-commerce solution"
-//   image="/projects/ecommerce.jpg"
-//   tags={["React", "Node.js", "MongoDB"]}
-//   github="https://github.com/username/project"
-//   demo="https://demo-url.com"
-// />
-

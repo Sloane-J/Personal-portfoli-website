@@ -1,33 +1,32 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
-import { Github, Linkedin, Mail, Twitter } from "lucide-react"
-import { Button } from "./button"
-import { siteConfig } from "@/lib/constants"
+import { motion } from "framer-motion";
+import { Github, Linkedin, Mail } from "lucide-react";
+import { Button } from "./button";
 
 const socialLinks = [
   {
     name: "GitHub",
-    href: siteConfig.github,
+    href: "https://github.com/Sloane-J",
     icon: Github,
   },
   {
     name: "LinkedIn",
-    href: siteConfig.linkedin,
+    href: "https://www.linkedin.com/in/samuel-dorkey-9a88901bb/",
     icon: Linkedin,
   },
   {
     name: "Email",
-    href: `mailto:${siteConfig.email}`,
+    href: "mailto:samueldorkeyjr@gmail.com",
     icon: Mail,
   },
-]
+];
 
 export function SocialIcons() {
   return (
     <div className="flex gap-4">
       {socialLinks.map((link, i) => {
-        const Icon = link.icon
+        const Icon = link.icon;
         return (
           <motion.div
             key={link.name}
@@ -41,9 +40,8 @@ export function SocialIcons() {
               </a>
             </Button>
           </motion.div>
-        )
+        );
       })}
     </div>
-  )
+  );
 }
-
