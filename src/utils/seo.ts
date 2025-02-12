@@ -7,7 +7,7 @@ interface SEOProps {
   }
   
   export const defaultSEO: SEOProps = {
-    title: "Your Name - Full Stack Developer",
+    title: "Samuel D. Jr - Freelance Web Designer and Developer",
     description: "Full Stack Developer specializing in React, Node.js, and modern web technologies.",
     image: "/og-image.png", // Default OG image
     url: "https://yourwebsite.com",

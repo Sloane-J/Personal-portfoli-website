@@ -3,56 +3,62 @@
 import { motion } from "framer-motion"
 import { Container } from "@/components/ui/container"
 
+const spinnerVariants = {
+  animate: {
+    scale: [1, 1.1, 1],
+    opacity: [0.6, 1, 0.6],
+    transition: {
+      duration: 2,
+      repeat: Infinity,
+      ease: "easeInOut",
+      times: [0, 0.5, 1]
+    }
+  }
+}
+
+const textVariants = {
+  animate: {
+    opacity: [0.6, 1, 0.6],
+    transition: {
+      duration: 2,
+      repeat: Infinity,
+      ease: "easeInOut",
+      times: [0, 0.5, 1]
+    }
+  }
+}
+
 export default function Loading() {
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-background">
+    <div className="fixed inset-0 z-50 grid place-items-center bg-background/80 backdrop-blur-sm">
       <Container className="flex flex-col items-center gap-4">
         <motion.div
-          animate={{
-            scale: [1, 1.2, 1],
-            opacity: [0.5, 1, 0.5],
-          }}
-          transition={{
-            duration: 1.5,
-            repeat: Number.POSITIVE_INFINITY,
-            ease: "easeInOut",
-          }}
-          className="relative h-16 w-16"
+          variants={spinnerVariants}
+          initial="initial"
+          animate="animate"
+          className="relative h-12 w-12"
         >
-          {/* You can replace this with your logo or custom loading animation */}
-          <div className="absolute inset-0 rounded-full border-4 border-primary/20" />
-          <div className="absolute inset-0 rounded-full border-4 border-t-primary animate-spin" />
+          <div 
+            className="absolute inset-0 rounded-full border-4 border-primary/20" 
+            style={{ willChange: 'transform' }}
+          />
+          <div 
+            className="absolute inset-0 rounded-full border-4 border-t-primary animate-spin"
+            style={{ 
+              willChange: 'transform',
+              animationDuration: '0.8s'
+            }} 
+          />
         </motion.div>
         <motion.p
-          animate={{
-            opacity: [0.5, 1, 0.5],
-          }}
-          transition={{
-            duration: 1.5,
-            repeat: Number.POSITIVE_INFINITY,
-            ease: "easeInOut",
-          }}
-          className="text-lg font-medium text-muted-foreground"
+          variants={textVariants}
+          initial="initial"
+          animate="animate"
+          className="text-base font-medium text-muted-foreground"
         >
-          Loading...
+          Loading
         </motion.p>
       </Container>
     </div>
   )
 }
-
-{/**  
-export function Loading() {
-  return (
-    <div className="flex h-[200px] items-center justify-center">
-      <div className="h-8 w-8 animate-spin rounded-full border-4 border-primary border-t-transparent" />
-    </div>
-  )
-}
-
-// Usage:
-// {isLoading && <Loading />}
-
-
-
- */}

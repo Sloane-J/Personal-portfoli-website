@@ -4,40 +4,41 @@ import { motion } from "framer-motion"
 import { Container } from "@/components/ui/container"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { fadeUpVariant, staggerContainer } from "@/utils/motion"
-import { Code2, Layout, Database, Cloud, Shield, Smartphone } from "lucide-react"
+import { Code2, Layout, Database, Globe, PencilRuler, Search } from "lucide-react"
 
 const services = [
   {
-    title: "Frontend Development",
-    description: "Building responsive and interactive user interfaces using React, Next.js, and modern CSS frameworks.",
+    title: "Modern Web Development",
+    description: "Building fast, SEO-friendly, and responsive web applications using React.js, Astro.js, and Tailwind CSS.",
     icon: Layout,
   },
   {
-    title: "Backend Development",
-    description: "Creating robust server-side applications and APIs using Node.js, Express, and various databases.",
-    icon: Database,
-  },
-  {
-    title: "Full Stack Development",
-    description: "End-to-end application development with seamless integration between frontend and backend systems.",
+    title: "Full-Stack Development",
+    description: "Developing scalable web solutions with React, PHP, and server-side rendering for optimal performance.",
     icon: Code2,
   },
   {
-    title: "Cloud Solutions",
-    description: "Deploying and managing applications on cloud platforms like AWS, Google Cloud, and Vercel.",
-    icon: Cloud,
+    title: "Static Site Generation",
+    description: "Creating high-performance, pre-rendered websites with Astro.js and Hugo for improved speed and SEO.",
+    icon: Globe,
   },
   {
-    title: "Security Implementation",
-    description: "Implementing secure authentication, authorization, and data protection measures.",
-    icon: Shield,
+    title: "Website Wireframe Design",
+    description: "Designing intuitive wireframes and UI structures for a seamless user experience before development.",
+    icon: PencilRuler,
   },
   {
-    title: "Mobile Development",
-    description: "Creating cross-platform mobile applications using React Native and modern mobile frameworks.",
-    icon: Smartphone,
+    title: "Backend & API Development",
+    description: "Building efficient and secure APIs using PHP and database integrations.",
+    icon: Database,
   },
-]
+  {
+    title: "Technical SEO Implementation",
+    description: "Optimizing web applications for search engines with proper metadata, structured data, and server-side rendering.",
+    icon: Search,
+  },
+];
+
 
 export default function Services() {
   return (

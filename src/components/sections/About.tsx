@@ -92,7 +92,7 @@ export default function ModernAbout() {
             className="relative aspect-square overflow-hidden rounded-2xl shadow-xl"
           >
             <img
-              src="/placeholder.svg"
+              src="/logo.jpg"
               alt="Profile picture"
               className="w-full h-full object-cover filter hover:grayscale-0 grayscale transition-all duration-300"
             />

@@ -1,6 +1,6 @@
 export const siteConfig = {
     name: "Samuel",
-    title: "Full Stack Developer",
+    title: "Freelance Web Designer and Developer",
     description: "Building modern web applications with React and PHP",
     email: "samueldorkeyjr@gmail.com",
     github: "https://github.com/Sloane-J",

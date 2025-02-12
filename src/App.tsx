@@ -1,68 +1,76 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { Suspense, lazy } from "react"
 import { AnimatePresence } from "framer-motion"
 
-// Import components
+// Import critical components normally
 import Navbar from "./components/layout/Navbar"
 import Hero from "./components/sections/Hero"
-import About from "./components/sections/About"
-import Projects from "./components/sections/Projects"
-import Skills from "./components/sections/Skills"
-import Contact from "./components/sections/Contact"
 import Footer from "./components/layout/Footer"
-import CustomCursor from "./components/ui/custom-cursor"
 import { ThemeProvider } from "./components/theme-provider"
-import ScrollToTop from "./components/ui/scroll-to-top"
-{/*import Experience from "./components/sections/Experience"*/}
-import Blog from "./components/sections/Blog"
-import Services from "./components/sections/Services"
-import Testimonials from "./components/sections/Testimonials"
+import Loading from "./components/ui/loading"
+
+// Lazy load non-critical components
+const CustomCursor = lazy(() => import("./components/ui/custom-cursor"))
+const ScrollToTop = lazy(() => import("./components/ui/scroll-to-top"))
+const About = lazy(() => import("./components/sections/About"))
+const Projects = lazy(() => import("./components/sections/Projects"))
+const Skills = lazy(() => import("./components/sections/Skills"))
+const Contact = lazy(() => import("./components/sections/Contact"))
+const Blog = lazy(() => import("./components/sections/Blog"))
+const Services = lazy(() => import("./components/sections/Services"))
+const Testimonials = lazy(() => import("./components/sections/Testimonials"))
 
 function App() {
-  const [isLoading, setIsLoading] = useState(true)
-
-  useEffect(() => {
-    // Simulate loading state
-    const timer = setTimeout(() => {
-      setIsLoading(false)
-    }, 1000)
-
-    return () => clearTimeout(timer)
-  }, [])
-
   return (
     <ThemeProvider>
       <AnimatePresence mode="wait">
-        {isLoading ? (
-          <div className="flex h-screen items-center justify-center">
-            <div className="h-8 w-8 animate-spin rounded-full border-4 border-primary border-t-transparent" />
+        {/* Critical UI elements load immediately */}
+        <Navbar />
+        
+        <main className="flex min-h-screen flex-col">
+          {/* Hero section loads immediately for fast initial paint */}
+          <Hero />
+          
+          <div className="flex-1">
+            {/* Non-critical UI elements */}
+            <Suspense fallback={null}>
+              <CustomCursor />
+              <ScrollToTop />
+            </Suspense>
+
+            {/* Content sections with loading states */}
+            <Suspense fallback={<Loading />}>
+              <About />
+            </Suspense>
+
+            <Suspense fallback={<Loading />}>
+              <Services />
+            </Suspense>
+
+            {/* Projects section with prefetching */}
+            <Suspense fallback={<Loading />}>
+              <Projects />
+            </Suspense>
+
+            {/* Skills section loads when user scrolls near it */}
+            <Suspense fallback={<Loading />}>
+              <Skills />
+            </Suspense>
+
+            {/* Lower priority sections */}
+            <Suspense fallback={<Loading />}>
+              <Testimonials />
+              <Blog />
+              <Contact />
+            </Suspense>
           </div>
-        ) : (
-          <>
-            <CustomCursor />
-            <main className="flex min-h-screen flex-col">
-              <Navbar />
-              <div className="flex-1">
-                <Hero />
-                <About />
-                {/*<Experience />*/}
-                <Services />
-                <Projects />
-                <Skills />
-                <Testimonials />
-                <Blog />
-                <Contact />
-              </div>
-              <Footer />
-            </main>
-            <ScrollToTop />
-          </>
-        )}
+
+          <Footer />
+        </main>
       </AnimatePresence>
     </ThemeProvider>
   )
 }
 
 export default App
-

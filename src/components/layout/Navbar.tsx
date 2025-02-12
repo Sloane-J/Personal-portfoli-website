@@ -68,12 +68,12 @@ export default function Navbar() {
         <nav className="flex h-16 items-center justify-between">
           <motion.a
             href="#home"
-            className="text-xl font-bold"
+            className="text-lg font-semibold tracking-tight hover:text-primary transition-colors"
             variants={fadeUpVariant}
             initial="hidden"
             animate="visible"
           >
-            Portfolio
+            Samuel D. Jr
           </motion.a>
 
           <div className="hidden items-center space-x-8 md:flex">
