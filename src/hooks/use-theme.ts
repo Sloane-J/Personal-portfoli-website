@@ -1,16 +1,15 @@
+// src/hooks/use-theme.ts (moved from theme.ts)
 import { useEffect, useState } from "react"
 
 type Theme = "light" | "dark" | "system"
 
 export function useTheme() {
   const [theme, setTheme] = useState<Theme>(() => {
-    // Check localStorage first
     if (typeof window !== "undefined") {
       const stored = localStorage.getItem("theme") as Theme
       if (stored) return stored
     }
-    // Default to system
-    return "system"
+    return "dark"
   })
 
   useEffect(() => {
@@ -24,7 +23,6 @@ export function useTheme() {
     localStorage.setItem("theme", theme)
   }, [theme])
 
-  // Listen for system theme changes
   useEffect(() => {
     const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)")
 
@@ -47,4 +45,3 @@ export function useTheme() {
     isDarkTheme: theme === "dark" || (theme === "system" && window.matchMedia("(prefers-color-scheme: dark)").matches),
   }
 }
-

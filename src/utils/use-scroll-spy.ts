@@ -1,48 +1,33 @@
-import { useState, useEffect } from "react"
+// src/utils/use-scroll-spy.ts
+import { useEffect, useState } from "react"
 
-export function useScrollSpy() {
-  const [activeSection, setActiveSection] = useState<string>("")
+export function useScrollSpy(sectionIds: string[], offset: number = 0) {
+  const [activeId, setActiveId] = useState<string>("")
 
   useEffect(() => {
-    const sections = document.querySelectorAll("section[id]")
-
     const handleScroll = () => {
-      const scrollPosition = window.scrollY + window.innerHeight / 2
+      const sections = sectionIds.map((id) => document.getElementById(id))
+      const scrollPosition = window.scrollY + offset
 
-      sections.forEach((section) => {
-        const sectionTop = section.offsetTop
-        const sectionHeight = section.offsetHeight
-        const sectionId = section.getAttribute("id") || ""
+      for (let i = sections.length - 1; i >= 0; i--) {
+        const section = sections[i]
+        if (!section) continue
+
+        const rect = section.getBoundingClientRect()
+        const sectionTop = rect.top + window.scrollY
+        const sectionHeight = rect.height
 
         if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-          setActiveSection(sectionId)
+          setActiveId(sectionIds[i])
+          break
         }
-      })
+      }
     }
 
-    // Initial check
     handleScroll()
-
-    window.addEventListener("scroll", handleScroll, { passive: true })
+    window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
+  }, [sectionIds, offset])
 
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId)
-    if (element) {
-      const navHeight = 80 // Adjust this value based on your navbar height
-      const elementPosition = element.offsetTop - navHeight
-
-      window.scrollTo({
-        top: elementPosition,
-        behavior: "smooth",
-      })
-    }
-  }
-
-  return {
-    activeSection,
-    scrollToSection,
-  }
+  return activeId
 }
-
