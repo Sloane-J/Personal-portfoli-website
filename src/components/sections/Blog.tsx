@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
-import Container from "../../ui/container";  // Adjust the relative path based on the file structure
+import { Container } from "../ui/container";  // Adjust the relative path based on the file structure
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { fadeUpVariant, staggerContainer, hoverScale } from '@/utils/motion'
