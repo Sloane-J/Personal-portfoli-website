@@ -1,4 +1,3 @@
-// theme-toggle.tsx
 import { Moon, Sun } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import {
@@ -10,7 +9,7 @@ import {
 import { useTheme } from "./theme"
 
 export function ThemeToggle() {
-  const { theme, setTheme } = useTheme()
+  const { setTheme } = useTheme()
 
   return (
     <DropdownMenu>
@@ -34,52 +33,4 @@ export function ThemeToggle() {
       </DropdownMenuContent>
     </DropdownMenu>
   )
-}
-
-// theme.ts (move your existing code here)
-import { useEffect, useState } from "react"
-
-type Theme = "light" | "dark" | "system"
-
-export function useTheme() {
-  const [theme, setTheme] = useState<Theme>(() => {
-    if (typeof window !== "undefined") {
-      const stored = localStorage.getItem("theme") as Theme
-      if (stored) return stored
-    }
-    return "system"
-  })
-
-  useEffect(() => {
-    const root = window.document.documentElement
-    const systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"
-
-    root.classList.remove("light", "dark")
-
-    const effectiveTheme = theme === "system" ? systemTheme : theme
-    root.classList.add(effectiveTheme)
-    localStorage.setItem("theme", theme)
-  }, [theme])
-
-  useEffect(() => {
-    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)")
-
-    const handleChange = () => {
-      if (theme === "system") {
-        const root = window.document.documentElement
-        root.classList.remove("light", "dark")
-        root.classList.add(mediaQuery.matches ? "dark" : "light")
-      }
-    }
-
-    mediaQuery.addEventListener("change", handleChange)
-    return () => mediaQuery.removeEventListener("change", handleChange)
-  }, [theme])
-
-  return {
-    theme,
-    setTheme,
-    isSystemTheme: theme === "system",
-    isDarkTheme: theme === "dark" || (theme === "system" && window.matchMedia("(prefers-color-scheme: dark)").matches),
-  }
 }
