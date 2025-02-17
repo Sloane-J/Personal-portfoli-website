@@ -4,7 +4,7 @@ export function useScrollSpy() {
   const [activeSection, setActiveSection] = useState<string>("")
 
   useEffect(() => {
-    const sections = document.querySelectorAll("section[id]")
+    const sections = document.querySelectorAll<HTMLElement>("section[id]")
 
     const handleScroll = () => {
       const scrollPosition = window.scrollY + window.innerHeight / 2
@@ -28,7 +28,7 @@ export function useScrollSpy() {
   }, [])
 
   const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId)
+    const element = document.getElementById(sectionId) as HTMLElement | null
     if (element) {
       const navHeight = 80 // Adjust this value based on your navbar height
       const elementPosition = element.offsetTop - navHeight
@@ -45,4 +45,3 @@ export function useScrollSpy() {
     scrollToSection,
   }
 }
-
