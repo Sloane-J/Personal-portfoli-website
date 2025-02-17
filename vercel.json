@@ -1,11 +1,6 @@
 {
-    "builds": [
-      {
-        "src": "package.json",
-        "use": "@vercel/node"
-      }
-    ],
     "rewrites": [
       { "source": "/(.*)", "destination": "/index.html" }
     ]
   }
+  
