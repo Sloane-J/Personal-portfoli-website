@@ -2,7 +2,8 @@
 
 import { motion } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
-import { Container } from "../ui/container";  // Named import
+//import { Container } from "../ui/container"; 
+import { Container } from "@/components/ui/container"
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { fadeUpVariant, staggerContainer, hoverScale } from '@/utils/motion'
