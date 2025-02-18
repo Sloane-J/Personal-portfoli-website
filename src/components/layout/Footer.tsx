@@ -1,4 +1,4 @@
-import { Container } from "@/components/ui/container"
+import { Container } from "@/components/ui/container" // This is correct - all lowercase
 import { Github, Linkedin, Mail, Twitter } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
