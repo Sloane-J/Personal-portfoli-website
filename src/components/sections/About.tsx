@@ -1,18 +1,18 @@
-"use client"
+"use client";
 
-import /*React,*/ { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
-import { Download, CodeIcon, PaletteIcon, BookOpenIcon } from 'lucide-react';
-import { Container } from '@/components/ui/container';
+import { /*React,*/ useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Download, CodeIcon, PaletteIcon, BookOpenIcon } from "lucide-react";
+import { Container } from "@/components/ui/container";
 
 // Define valid tab types
-type TabType = 'story' | 'interests';
+type TabType = "story" | "interests";
 
 export default function ModernAbout() {
   // Single state declaration with proper typing
-  const [activeTab, setActiveTab] = useState<TabType>('story');
+  const [activeTab, setActiveTab] = useState<TabType>("story");
 
   // Define tabContent with proper typing
   const tabContent: Record<TabType, JSX.Element> = {
@@ -24,11 +24,15 @@ export default function ModernAbout() {
         className="space-y-4"
       >
         <p>
-          Hello! I'm Samuel D. Jr, a passionate Full Stack Developer with a keen interest in building digital solutions that make a difference. 
-          With 3 years of experience in web development, I've worked on diverse projects that have sharpened my skills in both frontend and backend technologies.
+          Hello! I'm Samuel D. Jr, a passionate Software Developer with a keen
+          interest in building digital solutions that make a difference. With 3
+          years of experience in web development, I've worked on diverse
+          projects that have sharpened my skills in both frontend and backend
+          technologies.
         </p>
         <p>
-          My journey in tech is driven by a curiosity to solve complex problems and create innovative digital experiences.
+          My journey in tech is driven by a curiosity to solve complex problems
+          and create innovative digital experiences.
         </p>
       </motion.div>
     ),
@@ -67,7 +71,7 @@ export default function ModernAbout() {
           </div>
         </div>
       </motion.div>
-    )
+    ),
   };
 
   return (
@@ -81,13 +85,13 @@ export default function ModernAbout() {
           className="grid md:grid-cols-2 gap-12"
         >
           {/* Image Section */}
-          <motion.div 
+          <motion.div
             initial={{ scale: 0.9, opacity: 0 }}
             whileInView={{ scale: 1, opacity: 1 }}
-            transition={{ 
+            transition={{
               duration: 0.6,
               type: "spring",
-              stiffness: 100
+              stiffness: 100,
             }}
             className="relative aspect-square overflow-hidden rounded-2xl shadow-xl"
           >
@@ -102,20 +106,24 @@ export default function ModernAbout() {
           <div className="space-y-6">
             <div className="space-y-4">
               <h2 className="text-4xl font-bold tracking-tight">About Me</h2>
-              <p className="text-muted-foreground">Full Stack Developer based in Ghana</p>
+              <p className="text-muted-foreground">
+                Software Developer based in Ghana
+              </p>
             </div>
 
             {/* Tab Navigation */}
             <div className="flex space-x-4 border-b mb-4">
-              {(['story', 'interests'] as const).map((tab) => (
+              {(["story", "interests"] as const).map((tab) => (
                 <button
                   key={tab}
                   onClick={() => setActiveTab(tab)}
                   className={`
                     pb-2 capitalize transition-colors
-                    ${activeTab === tab 
-                      ? 'border-b-2 border-primary text-primary' 
-                      : 'text-muted-foreground hover:text-foreground'}
+                    ${
+                      activeTab === tab
+                        ? "border-b-2 border-primary text-primary"
+                        : "text-muted-foreground hover:text-foreground"
+                    }
                   `}
                 >
                   {tab}
@@ -124,14 +132,14 @@ export default function ModernAbout() {
             </div>
 
             <AnimatePresence mode="wait" initial={false}>
-              <motion.div 
+              <motion.div
                 key={activeTab}
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: 20 }}
-                transition={{ 
+                transition={{
                   duration: 0.2,
-                  ease: "easeInOut"
+                  ease: "easeInOut",
                 }}
               >
                 {tabContent[activeTab]}

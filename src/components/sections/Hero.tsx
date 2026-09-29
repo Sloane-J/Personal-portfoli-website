@@ -10,7 +10,10 @@ interface WordAnimationProps {
   className?: string;
 }
 
-const WordAnimation: React.FC<WordAnimationProps> = ({ text, className = "" }) => {
+const WordAnimation: React.FC<WordAnimationProps> = ({
+  text,
+  className = "",
+}) => {
   const words: string[] = text.split(" ");
 
   const containerVariants = {
@@ -37,9 +40,18 @@ const WordAnimation: React.FC<WordAnimationProps> = ({ text, className = "" }) =
   };
 
   return (
-    <motion.div variants={containerVariants} initial="hidden" animate="visible" className={className}>
+    <motion.div
+      variants={containerVariants}
+      initial="hidden"
+      animate="visible"
+      className={className}
+    >
       {words.map((word: string, index: number) => (
-        <motion.span key={index} variants={itemVariants} className="inline-block mr-2">
+        <motion.span
+          key={index}
+          variants={itemVariants}
+          className="inline-block mr-2"
+        >
           {word}
         </motion.span>
       ))}
@@ -85,7 +97,12 @@ export default function ModernHero() {
       <div className="container mx-auto px-4">
         <div className="relative grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Left column */}
-          <motion.div variants={containerVariants} initial="hidden" animate="visible" className="space-y-8">
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+            className="space-y-8"
+          >
             {/* Main heading section */}
             <div className="space-y-6">
               <WordAnimation
@@ -97,17 +114,24 @@ export default function ModernHero() {
                 <div className="relative flex items-center gap-4">
                   <div className="font-mono text-lg md:text-xl tracking-tight">
                     <span className="text-primary">&lt;</span>
-                    <span className="text-foreground/80">Full Stack Developer</span>
+                    <span className="text-foreground/80">
+                      Software Developer
+                    </span>
                     <span className="text-primary">/&gt;</span>
                   </div>
                 </div>
 
-                <p className="text-xl text-muted-foreground leading-relaxed">{siteConfig.description}</p>
+                <p className="text-xl text-muted-foreground leading-relaxed">
+                  {siteConfig.description}
+                </p>
               </motion.div>
             </div>
 
             {/* CTA section */}
-            <motion.div variants={itemVariants} className="flex flex-wrap gap-4">
+            <motion.div
+              variants={itemVariants}
+              className="flex flex-wrap gap-4"
+            >
               <Button size="lg" className="group relative" asChild>
                 <a href="#projects">
                   View Work
@@ -120,18 +144,32 @@ export default function ModernHero() {
             </motion.div>
 
             {/* Role and Social links */}
-            <motion.div variants={itemVariants} className="flex flex-col space-y-6">
+            <motion.div
+              variants={itemVariants}
+              className="flex flex-col space-y-6"
+            >
               {/* Social links */}
               <div className="flex items-center gap-6">
-                <a href={siteConfig.github} target="_blank" className="group relative">
+                <a
+                  href={siteConfig.github}
+                  target="_blank"
+                  className="group relative"
+                >
                   <span className="absolute -inset-2 rounded-lg bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity" />
                   <Github className="w-6 h-6 relative text-muted-foreground group-hover:text-primary transition-colors" />
                 </a>
-                <a href={siteConfig.linkedin} target="_blank" className="group relative">
+                <a
+                  href={siteConfig.linkedin}
+                  target="_blank"
+                  className="group relative"
+                >
                   <span className="absolute -inset-2 rounded-lg bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity" />
                   <Linkedin className="w-6 h-6 relative text-muted-foreground group-hover:text-primary transition-colors" />
                 </a>
-                <a href={`mailto:${siteConfig.email}`} className="group relative">
+                <a
+                  href={`mailto:${siteConfig.email}`}
+                  className="group relative"
+                >
                   <span className="absolute -inset-2 rounded-lg bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity" />
                   <Mail className="w-6 h-6 relative text-muted-foreground group-hover:text-primary transition-colors" />
                 </a>
@@ -143,7 +181,11 @@ export default function ModernHero() {
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.8, duration: 1, ease: [0.2, 0.65, 0.3, 0.9] }}
+            transition={{
+              delay: 0.8,
+              duration: 1,
+              ease: [0.2, 0.65, 0.3, 0.9],
+            }}
             className="hidden lg:block relative"
           >
             <div className="absolute inset-0 bg-gradient-to-r from-background to-transparent z-10" />

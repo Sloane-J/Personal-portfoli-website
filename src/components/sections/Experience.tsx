@@ -1,14 +1,14 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
-import { Container } from "@/components/ui/container"
-import { Card, CardContent } from "@/components/ui/card"
-import { fadeUpVariant, staggerContainer } from "@/utils/motion"
-import { Calendar, MapPin } from "lucide-react"
+import { motion } from "framer-motion";
+import { Container } from "@/components/ui/container";
+import { Card, CardContent } from "@/components/ui/card";
+import { fadeUpVariant, staggerContainer } from "@/utils/motion";
+import { Calendar, MapPin } from "lucide-react";
 
 const experiences = [
   {
-    title: "Senior Full Stack Developer",
+    title: "Senior Software Developer",
     company: "Tech Solutions Inc.",
     location: "San Francisco, CA",
     period: "2022 - Present",
@@ -20,7 +20,7 @@ const experiences = [
     ],
   },
   {
-    title: "Full Stack Developer",
+    title: "Software Developer",
     company: "Digital Innovations",
     location: "New York, NY",
     period: "2020 - 2022",
@@ -43,7 +43,7 @@ const experiences = [
       "Increased mobile user engagement by 45%",
     ],
   },
-]
+];
 
 export default function Experience() {
   return (
@@ -56,8 +56,13 @@ export default function Experience() {
           viewport={{ once: true }}
           className="space-y-12"
         >
-          <motion.div variants={fadeUpVariant} className="space-y-4 text-center">
-            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl">Work Experience</h2>
+          <motion.div
+            variants={fadeUpVariant}
+            className="space-y-4 text-center"
+          >
+            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl">
+              Work Experience
+            </h2>
             <p className="mx-auto max-w-[700px] text-muted-foreground">
               My professional journey and contributions in the tech industry
             </p>
@@ -78,12 +83,16 @@ export default function Experience() {
                   className={`absolute left-[-8px] top-0 h-4 w-4 rounded-full border-2 border-primary bg-background md:left-1/2 md:ml-[-8px]`}
                 />
                 <div className="flex-1 md:w-1/2">
-                  <Card className={`mx-2 md:mx-8 ${index % 2 === 0 ? "md:mr-0" : "md:ml-0"}`}>
+                  <Card
+                    className={`mx-2 md:mx-8 ${index % 2 === 0 ? "md:mr-0" : "md:ml-0"}`}
+                  >
                     <CardContent className="p-6">
                       <div className="space-y-4">
                         <div>
                           <h3 className="font-semibold">{experience.title}</h3>
-                          <p className="text-lg font-medium text-primary">{experience.company}</p>
+                          <p className="text-lg font-medium text-primary">
+                            {experience.company}
+                          </p>
                         </div>
                         <div className="flex flex-wrap gap-4 text-sm text-muted-foreground">
                           <div className="flex items-center gap-1">
@@ -112,6 +121,5 @@ export default function Experience() {
         </motion.div>
       </Container>
     </section>
-  )
+  );
 }
-

@@ -33,11 +33,11 @@ interface SkillCategory {
 
 export const personalInfo = {
   name: "Samuel Dorkey",
-  role: "Full Stack Developer",
+  role: "Software Developer",
   description: "Building exceptional digital experiences with modern web technologies.",
   email: "samueldorkeyjr@gmail.com",
-  location: "Koforidua, Ghana",
-  availability: "Open to new opportunities",
+  location: "Accra, Ghana",
+  availability: "Open to new projects",
 }
 
 export const projects: Project[] = [
@@ -69,36 +69,35 @@ export const projects: Project[] = [
     demo: "https://demo.com",
   },
 ]
-
 export const services: Service[] = [
   {
     title: "Frontend Development",
-    description: "Building responsive and interactive user interfaces using React, Next.js, and modern CSS frameworks.",
+    description: "Crafting fast, responsive, and accessible interfaces with React, Astro, and Tailwind CSS — built to look sharp on every screen and perform well in production.",
     icon: Layout,
   },
   {
     title: "Backend Development",
-    description: "Creating robust server-side applications and APIs using Node.js, Express, and various databases.",
+    description: "Designing and building reliable server-side logic, REST APIs, and database architectures using Node.js, Supabase, and PostgreSQL.",
     icon: Database,
   },
   {
     title: "Full Stack Development",
-    description: "End-to-end application development with seamless integration between frontend and backend systems.",
+    description: "Delivering complete, production-ready applications from database to UI — with clean architecture, type safety, and real-world deployment experience.",
     icon: Code2,
   },
   {
-    title: "Cloud Solutions",
-    description: "Deploying and managing applications on cloud platforms like AWS, Google Cloud, and Vercel.",
+    title: "Cloud & Deployment",
+    description: "Shipping applications to Vercel, Cloudflare Pages, and other modern platforms — with CI/CD pipelines, environment configuration, and zero-downtime deployments.",
     icon: Cloud,
   },
   {
-    title: "Security Implementation",
-    description: "Implementing secure authentication, authorization, and data protection measures.",
+    title: "Security & Auth",
+    description: "Implementing secure authentication flows, role-based access control, and data protection best practices — from Row Level Security in Supabase to edge-level enforcement.",
     icon: Shield,
   },
   {
     title: "Mobile Development",
-    description: "Creating cross-platform mobile applications using React Native and modern mobile frameworks.",
+    description: "Building cross-platform mobile and PWA experiences using React Native and Expo — with offline support, push notifications, and native device integrations.",
     icon: Smartphone,
   },
 ]
